@@ -1,5 +1,14 @@
-import { Box } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react";
 
-export const TitleWrapper = ({children}) => {
-    return <Box borderLeft={"1em white solid"} alignItems="center" pl="0.6em">{children}</Box>
-}
+export const TitleWrapper = ({ children, ...props }) => {
+  return (
+    <Box
+      borderLeft={{lg : "1em white solid",base : "0.3em white solid"}}
+      alignItems="center"
+      pl="0.6em"
+      {...props}
+    >
+      {children}
+    </Box>
+  );
+};

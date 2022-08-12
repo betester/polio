@@ -3,11 +3,17 @@ import { Navbar } from "./Navbar";
 
 export const Layout = ({ children }) => {
   return (
-    <Box bgColor={"primary.900"} w={"100%"} color="white" p="2em 3em">
+    <Box
+      bgColor={"primary.900"}
+      w={"100%"}
+      color="white"
+      p="2em 3em"
+      overflow={"auto"}
+    >
       <Navbar />
-      <Flex alignItems={"center"} h={"80%"} w={"100%"} pt="1em">
+      <Box h={"100%"} w={"100%"} p={{lg : "4em 3em", base : "5em 0"}}>
         {children}
-      </Flex>
+      </Box>
     </Box>
   );
 };
