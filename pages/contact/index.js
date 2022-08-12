@@ -19,7 +19,7 @@ const Contact = () => {
         <TitleWrapper textAlign="center">
           <Heading fontSize={{ base: "2xl", lg: "5xl" }}>Hit me up!</Heading>
           <Text fontSize={{ lg: "1.2rem", base: "16px" }}>
-            Feel free if you wanted to have a small chit-chat, <br /> i'll be
+            Feel free if you wanted to have a small chit-chat, <br /> {"i'll"} be
             more than happy to reply 😄{" "}
           </Text>
         </TitleWrapper>

@@ -11,12 +11,12 @@ import {
   ListItem,
   Tooltip,
   ListIcon,
-  CheckCircleIcon,
   Avatar,
 } from "@chakra-ui/react";
 import { STATUSES } from "../../constant/Project";
 import { PrimaryButton } from "../Button";
 import { FadeWrapper } from "../Wrapper";
+import { CheckCircleIcon } from "@chakra-ui/icons";
 
 export const Project = ({
   title = "Name of the Project",
@@ -48,9 +48,9 @@ export const Project = ({
             <Text fontWeight={"bold"}>My Contribution</Text>
 
             <List mt="1em" spacing={3} pl="1em">
-              {contributions?.map((contribution) => {
+              {contributions?.map((contribution,index) => {
                 return (
-                  <ListItem>
+                  <ListItem key={index}>
                     <ListIcon as={CheckCircleIcon} color="green.500" />
                     {contribution}
                   </ListItem>
@@ -63,8 +63,8 @@ export const Project = ({
           <Box>
             <Text fontWeight={"bold"}>Tech Stack</Text>
             <HStack mt="1em">
-              {techStacks?.map((techStack) => (
-                <Avatar background={"white"} src={techStack} />
+              {techStacks?.map((techStack,index) => (
+                <Avatar key={index} background={"white"} src={techStack} />
               ))}
             </HStack>
           </Box>

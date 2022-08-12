@@ -65,10 +65,10 @@ const Projects = () => {
                   <MenuGroup title={type}>
                     {PROJECT_DATA[type].map((data, index) => (
                       <MenuItem
+                        key={index}
                         onClick={() => {
                           changeSelectedProject(index, type);
                         }}
-                        key={index}
                       >
                         {data["title"]}
                       </MenuItem>

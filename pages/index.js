@@ -37,7 +37,7 @@ export default function Home() {
         <FadeWrapper userSelect={"none"}>
           <TitleWrapper>
             <Heading fontSize={{ base: "3xl", lg: "5xl" }}>
-              Hi I'm Ikram <br /> I{" "}
+              Hi {"I'm"} Ikram <br /> I{" "}
               <Code colorScheme="yellow" fontSize={{ base: "3xl", lg: "5xl" }}>
                 {"<Code/>"}
               </Code>{" "}
@@ -80,7 +80,7 @@ export default function Home() {
                 Background 🍀
               </Text>
               <Text maxW={"90ch"} lineHeight={"1.7"}>
-                Hello there! I'm Ikramullah, you can call me ikram. I was born
+                Hello there! {"I'm"} Ikramullah, you can call me ikram. I was born
                 in 4th of July 2002, which is the independence day of America.
                 Though, i was born in Indonesia, Banda Aceh ,the most western
                 part of Indonesia. I grew up there until 20 years old and moved
@@ -96,7 +96,7 @@ export default function Home() {
                 I am currently studying in Universitas Indonesia, taking
                 Computer Science degree. I actually have no programming
                 experience, i chose Computer science just because. Turns out, i
-                really enjoyed it and now i'm at my 2nd year.
+                really enjoyed it and now {"i'm"} at my 2nd year.
               </Text>
             </>
             <>
@@ -124,7 +124,7 @@ export default function Home() {
               <Text maxW={"90ch"} lineHeight={"1.7"}>
                 Later on, i found out that there are a lot of things that you
                 can do with programming, such as web development, AI, Software
-                Engineer, and many more! Right now, i'm trying to be a fullstack
+                Engineer, and many more! Right now, {"i'm"} trying to be a fullstack
                 software engineer, so there are still a lot of things i should learn 📚.
               </Text>
             </>
