@@ -1,4 +1,4 @@
-import { VStack, Text, Menu } from "@chakra-ui/react";
+import { VStack, Text } from "@chakra-ui/react";
 import { SecondaryButton } from "../Button";
 
 export const ProjectSelector = ({
