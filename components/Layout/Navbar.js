@@ -27,7 +27,6 @@ export const Navbar = () => {
   const btnRef = useRef();
   const router = useRouter();
 
-
   return (
     <>
       {!isLargerThan800 ? (
@@ -49,6 +48,13 @@ export const Navbar = () => {
             <Link>
               <Text color={router.pathname === "/projects" && "secondary.900"}>
                 Projects
+              </Text>
+            </Link>
+          </NextLink>
+          <NextLink href={"/experiences"}>
+            <Link>
+              <Text color={router.pathname === "/experiences" && "secondary.900"}>
+                Experience
               </Text>
             </Link>
           </NextLink>
