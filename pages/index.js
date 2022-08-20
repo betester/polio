@@ -8,11 +8,12 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Code } from "@chakra-ui/react";
 import { FadeWrapper, TitleWrapper } from "../components/Wrapper";
 import { SecondaryButton } from "../components/Button/SecondaryButton";
 import { useRouter } from "next/router";
+import { SlideDownWrapper } from "../components/Wrapper/SlideDownWrapper";
 
 export default function Home() {
   const [aboutMe, setAboutMe] = useState(false);
@@ -35,6 +36,16 @@ export default function Home() {
     return newWord;
   };
 
+  useEffect(() => {
+    // TODO: panggil animasi habis udah diubah randomnya
+    let time = setTimeout(() => {
+      setRandom(changeWord(random));
+    }, 1500);
+    return () => {
+      clearTimeout(time);
+    };
+  }, [random]);
+
   return (
     <Flex
       alignItems={!aboutMe && "center"}
@@ -53,16 +64,8 @@ export default function Home() {
               <Code colorScheme="yellow" fontSize={{ base: "3xl", lg: "5xl" }}>
                 {"<Code/>"}
               </Code>{" "}
-              <Text
-                onMouseEnter={() => {
-                  setRandom(changeWord("Random"));
-                }}
-                onMouseLeave={() => {
-                  setRandom("Random");
-                }}
-                display={"inline"}
-              >
-                {random}{" "}
+              <Text display={"inline"}>
+                <SlideDownWrapper> {random} </SlideDownWrapper>
               </Text>
               Stuff{" "}
             </Heading>

@@ -64,7 +64,7 @@ const Experiences = () => {
                 <Text>6 months</Text>
               </Flex>
               <Text mt="0.3em">
-                one of FUKI's bureau. Act as mantainer for FUKI technology,
+                one of {"FUKI's"} bureau. Act as mantainer for FUKI technology,
                 mainly websites.
               </Text>
 
@@ -120,7 +120,7 @@ const Experiences = () => {
                 <Text>6 months</Text>
               </Flex>
               <Text mt="0.3em">
-                one of FUKI's bureau. Act as mantainer for FUKI technology,
+                one of {"FUKI's"} bureau. Act as mantainer for FUKI technology,
                 mainly websites.
               </Text>
 
