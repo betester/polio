@@ -1,10 +1,10 @@
-export async function getStaticPaths() {
+// export async function getStaticPaths() {
 
-}
+// }
 
-export async function getStaticProps(context) {
-}
+// export async function getStaticProps(context) {
+// }
 
-const BlogDetail = () => {};
+// const BlogDetail = () => {};
 
-export default BlogDetail;
+// export default BlogDetail;
