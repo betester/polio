@@ -15,10 +15,11 @@ export const Thumbnail = ({ title, date, summary, tags, slug, status }) => {
         <Text>{moment(date["date"]["start"]).format("MMMM, Do YYYY")}</Text>
       </Flex>
       <Text>{summary["results"][0]["rich_text"]["plain_text"]}</Text>
-      <HStack>
+      <HStack wrap={"wrap"}>
         {tags["multi_select"].map((tag, index) => {
           return (
             <Tag
+              m="0.3em"
               key={index}
               size={"md"}
               variant="subtle"

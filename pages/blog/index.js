@@ -26,6 +26,7 @@ export async function getStaticProps() {
       pages: pages,
       pageProperties: pageProperties,
     },
+    revalidate: 10,
   };
 }
 
