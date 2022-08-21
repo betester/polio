@@ -35,33 +35,45 @@ export const Navbar = () => {
           <HamburgerIcon />{" "}
         </SecondaryButton>
       ) : (
-        <HStack gap={"1em"} mb="2em" float={"right"} fontSize={"1.3rem"}>
+        <HStack gap={"0.6em"} mb="2em" float={"right"} fontSize={"1.1rem"}>
           <NextLink href={"/"}>
-            <Link>
-              <Text color={router.pathname === "/" && "secondary.900"}>
+            <Link style={{ textDecoration: "none" }}>
+              <Text
+                _hover={{ color: "secondary.900" }}
+                color={router.pathname === "/" && "secondary.900"}
+              >
                 {" "}
                 Home
               </Text>
             </Link>
           </NextLink>
           <NextLink href={"/projects"}>
-            <Link>
+            <Link style={{ textDecoration: "none" }}>
               <Text color={router.pathname === "/projects" && "secondary.900"}>
                 Projects
               </Text>
             </Link>
           </NextLink>
           <NextLink href={"/experiences"}>
-            <Link>
-              <Text color={router.pathname === "/experiences" && "secondary.900"}>
+            <Link style={{ textDecoration: "none" }}>
+              <Text
+                color={router.pathname === "/experiences" && "secondary.900"}
+              >
                 Experience
               </Text>
             </Link>
           </NextLink>
           <NextLink href={"/contact"}>
-            <Link>
+            <Link style={{ textDecoration: "none" }}>
               <Text color={router.pathname === "/contact" && "secondary.900"}>
                 Contact
+              </Text>
+            </Link>
+          </NextLink>
+          <NextLink href={"/blog"}>
+            <Link style={{ textDecoration: "none" }}>
+              <Text color={router.pathname === "/blog" && "secondary.900"}>
+                Blog
               </Text>
             </Link>
           </NextLink>
@@ -72,6 +84,7 @@ export const Navbar = () => {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
+        size={"full"}
       >
         <DrawerOverlay />
         <DrawerContent bgColor={"primary.900"} color="white">
@@ -79,9 +92,9 @@ export const Navbar = () => {
           <DrawerHeader>Navigate</DrawerHeader>
 
           <DrawerBody>
-            <VStack gap="0.4em" alignItems={"start"}>
+            <VStack gap="0.4em">
               <NextLink href={"/"}>
-                <Link onClick={onClose}>
+                <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
                     color={router.pathname === "/" && "secondary.900"}
                     fontSize={"xl"}
@@ -92,7 +105,7 @@ export const Navbar = () => {
                 </Link>
               </NextLink>
               <NextLink href={"/projects"}>
-                <Link onClick={onClose}>
+                <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
                     color={router.pathname === "/projects" && "secondary.900"}
                     fontSize={"xl"}
@@ -101,13 +114,31 @@ export const Navbar = () => {
                   </Text>
                 </Link>
               </NextLink>
+              <NextLink href={"/experiences"}>
+                <Link onClick={onClose} style={{ textDecoration: "none" }}>
+                  <Text
+                    color={
+                      router.pathname === "/experiences" && "secondary.900"
+                    }
+                  >
+                    Experience
+                  </Text>
+                </Link>
+              </NextLink>
               <NextLink href={"/contact"}>
-                <Link onClick={onClose}>
+                <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
                     color={router.pathname === "/contact" && "secondary.900"}
                     fontSize={"xl"}
                   >
                     Contact
+                  </Text>
+                </Link>
+              </NextLink>
+              <NextLink href={"/blog"}>
+                <Link onClick={onClose} style={{ textDecoration: "none" }}>
+                  <Text color={router.pathname === "/blog" && "secondary.900"}>
+                    Blog
                   </Text>
                 </Link>
               </NextLink>
