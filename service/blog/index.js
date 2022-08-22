@@ -1,4 +1,4 @@
-import { Client} from "@notionhq/client";
+import { Client } from "@notionhq/client";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
@@ -10,8 +10,8 @@ export const blog = {
       page_size: 5,
     });
   },
-  detail(page_id) {
-    return notion.pages.retrieve({ page_id: page_id });
+  detail(block_id) {
+    return notion.blocks.children.list({ block_id: block_id,page_size : 50 });
   },
   allProperties(page_id, properties) {
     return Promise.all(
