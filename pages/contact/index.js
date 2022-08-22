@@ -6,6 +6,7 @@ import {
   Text,
   Tooltip,
   VStack,
+  Flex,
 } from "@chakra-ui/react";
 import { FadeWrapper, TitleWrapper } from "../../components/Wrapper";
 import { FaGithub } from "react-icons/fa";
@@ -13,10 +14,9 @@ import { HiOutlineMail } from "react-icons/hi";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import Head from "next/head";
 
-
 const Contact = () => {
   return (
-    <>
+    <Flex alignItems={"center"} h={"100%"} pb="1em" w="100%">
       <Head>
         <title>Contact</title>
       </Head>
@@ -70,7 +70,7 @@ const Contact = () => {
           </HStack>
         </VStack>
       </FadeWrapper>
-    </>
+    </Flex>
   );
 };
 
