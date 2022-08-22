@@ -1,11 +1,14 @@
 import { blog } from "../../service/blog";
 import { Thumbnail } from "../../components/Blog";
-import { StackDivider, VStack } from "@chakra-ui/react";
+import { Box, Divider, StackDivider, VStack } from "@chakra-ui/react";
 import { propertiesToObject } from "../../helper/Blog";
 import { TitleWrapper } from "../../components/Wrapper";
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text, Flex } from "@chakra-ui/react";
+import { useState } from "react";
 
-const Blog = ({ pages, pageProperties }) => {
+const Blog = ({ allPages }) => {
+  const [listIndex, setListIndex] = useState(0);
+
   return (
     <>
       <TitleWrapper mb="2em">
@@ -21,35 +24,51 @@ const Blog = ({ pages, pageProperties }) => {
         margin={"0 auto"}
         w={{ lg: "80%", base: "100%" }}
       >
-        {" "}
-        {pageProperties.map((properties, index) => {
+        {allPages[listIndex]["pageProperties"].map((properties, index) => {
           return (
             <Thumbnail
               key={index}
-              pageId={pages["results"][index].id}
+              pageId={allPages[listIndex]["pages"]["results"][index].id}
               {...propertiesToObject(properties)}
             />
           );
         })}
       </VStack>
+      <Divider mt="1rem" />
+      <Box margin={"1rem auto"} w={{ lg: "90%", base: "100%" }}>
+        {listIndex != 0 && (
+          <Text
+            float="left"
+            onClick={() => {
+              setListIndex(listIndex - 1);
+            }}
+          >
+            Previous{" "}
+          </Text>
+        )}
+        {listIndex != allPages.length - 1 && (
+          <Text
+            float={"right"}
+            onClick={() => {
+              setListIndex(listIndex + 1);
+            }}
+          >
+            Next
+          </Text>
+        )}
+      </Box>
     </>
   );
 };
 
 export async function getStaticProps() {
-  const pages = await blog.all();
-  const pageProperties = await Promise.all(
-    pages["results"].map(
-      async (page) => await blog.allProperties(page.id, page.properties)
-    )
-  );
+  const allPages = await blog.all();
 
   return {
     props: {
-      pages: pages,
-      pageProperties: pageProperties,
+      allPages: allPages,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
 

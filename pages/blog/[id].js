@@ -6,19 +6,19 @@ import { BlogHeader } from "../../components/Blog";
 
 export async function getStaticPaths() {
   const pages = await blog.all();
-
-  const pageIds = await Promise.all(
-    pages["results"].map(async (page) => {
+  const pageIds = pages.map((pagination) => {
+    return pagination["pages"]["results"].map((page) => {
       return {
         params: {
           id: page.id,
         },
       };
-    })
-  );
+    });
+  });
+
 
   return {
-    paths: pageIds,
+    paths: pageIds.flat(),
     fallback: false,
   };
 }
@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
       details: pageDetail,
       properties: propertiesToObject(pagePropertiesDetail),
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
 

@@ -4,10 +4,9 @@ import {
   StackDivider,
   Text,
   VStack,
-  Code 
+  Code,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { FadeWrapper, TitleWrapper } from "../components/Wrapper";
 import { SecondaryButton } from "../components/Button/SecondaryButton";
