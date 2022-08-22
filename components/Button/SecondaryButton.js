@@ -5,7 +5,7 @@ export const SecondaryButton = forwardRef(
     <Button
       ref={ref}
       onClick={callback}
-      mt="2em"
+      mt="1em"
       bgColor={active ? "secondary.900" : "inherit"}
       border="1px solid"
       color={active && "black"}

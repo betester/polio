@@ -5,9 +5,10 @@ import {
   Text,
   VStack,
   Code,
+  Box,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FadeWrapper, TitleWrapper } from "../components/Wrapper";
 import { SecondaryButton } from "../components/Button/SecondaryButton";
 import { SlideDownWrapper } from "../components/Wrapper/SlideDownWrapper";
@@ -16,16 +17,42 @@ import { changeWord } from "../utils/scrambleWord";
 
 export default function Home() {
   const [aboutMe, setAboutMe] = useState(false);
-  const [random, setRandom] = useState("Random");
+  const RANDOM_CHARACTER = ["R", "a", "n", "d", "o", "m"];
+  const [random, setRandom] = useState(RANDOM_CHARACTER);
+  const randomRefs = [
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+  ];
+  const [isRolling, setIsRolling] = useState(false);
 
-  useEffect(() => {
-    let time = setTimeout(() => {
-      setRandom(changeWord(random));
-    }, 1500);
-    return () => {
-      clearTimeout(time);
-    };
-  }, [random]);
+  const roll = () => {
+    setIsRolling(true);
+    setTimeout(() => {
+      setIsRolling(false);
+    }, 700);
+
+    const newRandom = [];
+
+    randomRefs.forEach((ref) => {
+      const selected = randomRotation(ref.current);
+      newRandom.push(selected);
+    });
+
+    setRandom(newRandom);
+  };
+
+  const randomRotation = (ref) => {
+    const children = ref.children;
+    const randomIndex = Math.floor(Math.random() * RANDOM_CHARACTER.length);
+    const chosenChild = children[randomIndex];
+    ref.style.top = `${-chosenChild.offsetTop}px`;
+    return RANDOM_CHARACTER[randomIndex];
+  };
+
 
   return (
     <Flex
@@ -39,25 +66,58 @@ export default function Home() {
       </Head>
       {!aboutMe && (
         <FadeWrapper userSelect={"none"}>
-          <TitleWrapper>
+          <TitleWrapper display="flex" alignItems="center">
             <Heading fontSize={{ base: "3xl", lg: "5xl" }}>
               Hi {"I'm"} Ikram <br /> I{" "}
               <Code colorScheme="yellow" fontSize={{ base: "3xl", lg: "5xl" }}>
                 {"<Code/>"}
               </Code>{" "}
-              <Text display={"inline"}>
-                <SlideDownWrapper> {random} </SlideDownWrapper>
-              </Text>
-              Stuff{" "}
+              {randomRefs.map((ref, refIndex) => {
+                return (
+                  <Box
+                    key={refIndex}
+                    position={"relative"}
+                    display={"inline-block"}
+                    overflow={"hidden"}
+                    w={{ lg: "50px", base: "30px" }}
+                    h={{ lg: "50px", base: "33px" }}
+                    tran
+                  >
+                    <Box
+                      transition="top ease-in-out 0.5s"
+                      position={"absolute"}
+                      ref={ref}
+                      top="0"
+                    >
+                      {RANDOM_CHARACTER.map((_, charIndex) => (
+                        <Box key={charIndex}>
+                          {RANDOM_CHARACTER[(refIndex + charIndex) % 6]}
+                        </Box>
+                      ))}
+                    </Box>
+                  </Box>
+                );
+              })}
+              <Text>Stuff </Text>
             </Heading>
           </TitleWrapper>
-          <SecondaryButton
-            callback={() => {
-              setAboutMe(true);
-            }}
-          >
-            About me
-          </SecondaryButton>
+          <VStack alignItems={"start"}>
+            <SecondaryButton
+              callback={() => {
+                setAboutMe(true);
+              }}
+            >
+              About me
+            </SecondaryButton>
+            <SecondaryButton
+              callback={() => {
+                roll();
+              }}
+            >
+              {!isRolling && "I'm Feeling Lucky Today!"}
+              {isRolling && "Rolling"}
+            </SecondaryButton>
+          </VStack>
         </FadeWrapper>
       )}
       {aboutMe && (
