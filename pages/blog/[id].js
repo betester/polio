@@ -37,6 +37,7 @@ export async function getStaticProps(context) {
       details: pageDetail,
       properties: propertiesToObject(pagePropertiesDetail),
     },
+    revalidate: 10,
   };
 }
 
