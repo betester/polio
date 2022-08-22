@@ -10,8 +10,15 @@ export const blog = {
       page_size: 5,
     });
   },
+  database(database_id) {
+    return notion.databases.retrieve({ database_id: database_id });
+  },
+
   detail(block_id) {
-    return notion.blocks.children.list({ block_id: block_id,page_size : 50 });
+    return notion.blocks.children.list({ block_id: block_id, page_size: 50 });
+  },
+  page(page_id) {
+    return notion.pages.retrieve({page_id : page_id})
   },
   allProperties(page_id, properties) {
     return Promise.all(
