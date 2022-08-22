@@ -1,10 +1,31 @@
 import { Box, Text } from "@chakra-ui/react";
 
 const COMPONENT_MAP = new Map([
-  ["heading_1", (chidlren) => <Text fontSize={"3xl"}>{chidlren}</Text>],
-  ["heading_2", (children) => <Text fontSize={"2xl"}>{children}</Text>],
-  ["heading_3", (children) => <Text fontSize={"xl"}>{children}</Text>],
-  ["paragraph", (children) => <Text>{children}</Text>],
+  [
+    "heading_1",
+    (chidlren) => (
+      <Text fontWeight={"bold"} fontSize={"3xl"}>
+        {chidlren}
+      </Text>
+    ),
+  ],
+  [
+    "heading_2",
+    (children) => (
+      <Text fontWeight={"bold"} fontSize={"2xl"}>
+        {children}
+      </Text>
+    ),
+  ],
+  [
+    "heading_3",
+    (children) => (
+      <Text fontWeight={"bold"} fontSize={"xl"}>
+        {children}
+      </Text>
+    ),
+  ],
+  ["paragraph", (children) => <Text color="#f6f6f6">{children}</Text>],
   [
     "code",
     ({ children }) => (

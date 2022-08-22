@@ -7,18 +7,12 @@ export const Thumbnail = ({
   date,
   summary,
   tags,
-  slug,
-  status,
+
   pageId,
 }) => {
   return (
     <Link href={`/blog/${pageId}`}>
-      <VStack
-        cursor="pointer"
-        gap="0.2em"
-        alignItems={"start"}
-        w={{ lg: "80%", base: "100%" }}
-      >
+      <VStack cursor="pointer" gap="0.2em" alignItems={"start"} w="100%">
         <Flex
           justifyContent={"space-between"}
           w="100%"
@@ -27,9 +21,13 @@ export const Thumbnail = ({
           <Text maxW="45ch" fontWeight={"bold"} fontSize={"1.5rem"}>
             {title["results"][0]["title"]["plain_text"]}
           </Text>
-          <Text>{moment(date["date"]["start"]).format("MMMM, Do YYYY")}</Text>
+          <Text color={"#f6f6f6"} fontWeight="light">
+            {moment(date["date"]["start"]).format("MMMM, Do YYYY")}
+          </Text>
         </Flex>
-        <Text>{summary["results"][0]["rich_text"]["plain_text"]}</Text>
+        <Text color={"#f6f6f6"} fontWeight="light">
+          {summary["results"][0]["rich_text"]["plain_text"]}
+        </Text>
         <HStack wrap={"wrap"}>
           {tags["multi_select"].map((tag, index) => {
             return (

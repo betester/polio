@@ -49,7 +49,10 @@ export const Navbar = () => {
           </NextLink>
           <NextLink href={"/projects"}>
             <Link style={{ textDecoration: "none" }}>
-              <Text color={router.pathname === "/projects" && "secondary.900"}>
+              <Text
+                _hover={{ color: "secondary.900" }}
+                color={router.pathname === "/projects" && "secondary.900"}
+              >
                 Projects
               </Text>
             </Link>
@@ -57,6 +60,7 @@ export const Navbar = () => {
           <NextLink href={"/experiences"}>
             <Link style={{ textDecoration: "none" }}>
               <Text
+                _hover={{ color: "secondary.900" }}
                 color={router.pathname === "/experiences" && "secondary.900"}
               >
                 Experience
@@ -65,14 +69,20 @@ export const Navbar = () => {
           </NextLink>
           <NextLink href={"/contact"}>
             <Link style={{ textDecoration: "none" }}>
-              <Text color={router.pathname === "/contact" && "secondary.900"}>
+              <Text
+                _hover={{ color: "secondary.900" }}
+                color={router.pathname === "/contact" && "secondary.900"}
+              >
                 Contact
               </Text>
             </Link>
           </NextLink>
           <NextLink href={"/blog"}>
             <Link style={{ textDecoration: "none" }}>
-              <Text color={router.pathname === "/blog" && "secondary.900"}>
+              <Text
+                _hover={{ color: "secondary.900" }}
+                color={router.pathname === "/blog" && "secondary.900"}
+              >
                 Blog
               </Text>
             </Link>
@@ -89,13 +99,14 @@ export const Navbar = () => {
         <DrawerOverlay />
         <DrawerContent bgColor={"primary.900"} color="white">
           <DrawerCloseButton />
-          <DrawerHeader>Navigate</DrawerHeader>
+          <DrawerHeader></DrawerHeader>
 
           <DrawerBody>
             <VStack gap="0.4em">
               <NextLink href={"/"}>
                 <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
+                    _hover={{ color: "secondary.900" }}
                     color={router.pathname === "/" && "secondary.900"}
                     fontSize={"xl"}
                   >
@@ -107,6 +118,7 @@ export const Navbar = () => {
               <NextLink href={"/projects"}>
                 <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
+                    _hover={{ color: "secondary.900" }}
                     color={router.pathname === "/projects" && "secondary.900"}
                     fontSize={"xl"}
                   >
@@ -117,6 +129,7 @@ export const Navbar = () => {
               <NextLink href={"/experiences"}>
                 <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
+                    _hover={{ color: "secondary.900" }}
                     color={
                       router.pathname === "/experiences" && "secondary.900"
                     }
@@ -128,6 +141,7 @@ export const Navbar = () => {
               <NextLink href={"/contact"}>
                 <Link onClick={onClose} style={{ textDecoration: "none" }}>
                   <Text
+                    _hover={{ color: "secondary.900" }}
                     color={router.pathname === "/contact" && "secondary.900"}
                     fontSize={"xl"}
                   >
@@ -137,7 +151,10 @@ export const Navbar = () => {
               </NextLink>
               <NextLink href={"/blog"}>
                 <Link onClick={onClose} style={{ textDecoration: "none" }}>
-                  <Text color={router.pathname === "/blog" && "secondary.900"}>
+                  <Text
+                    _hover={{ color: "secondary.900" }}
+                    color={router.pathname === "/blog" && "secondary.900"}
+                  >
                     Blog
                   </Text>
                 </Link>

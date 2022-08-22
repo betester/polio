@@ -1,44 +1,74 @@
 import { blog } from "../../service/blog";
 import { Thumbnail } from "../../components/Blog";
-import { Box, StackDivider, VStack } from "@chakra-ui/react";
+import { Box, Divider, StackDivider, VStack } from "@chakra-ui/react";
 import { propertiesToObject } from "../../helper/Blog";
+import { TitleWrapper } from "../../components/Wrapper";
+import { Heading, Text, Flex } from "@chakra-ui/react";
+import { useState } from "react";
 
-const Blog = ({ pages, pageProperties }) => {
+const Blog = ({ allPages }) => {
+  const [listIndex, setListIndex] = useState(0);
+
   return (
-    <VStack
-      divider={<StackDivider />}
-      pb="1em"
-      gap="0.7em"
-      margin={"0 auto"}
-      w="100%"
-    >
-      {pageProperties.map((properties, index) => {
-        return (
-          <Thumbnail
-            key={index}
-            pageId={pages["results"][index].id}
-            {...propertiesToObject(properties)}
-          />
-        );
-      })}
-    </VStack>
+    <>
+      <TitleWrapper mb="2em">
+        <Heading fontSize={{ base: "2xl", lg: "4xl" }}>Blog</Heading>
+        <Text fontSize={{ lg: "1rem", base: "16px" }}>
+          Where my personal thoughts be poured
+        </Text>
+      </TitleWrapper>
+      <VStack
+        divider={<StackDivider />}
+        pb="1em"
+        gap="0.7em"
+        margin={"0 auto"}
+        w={{ lg: "80%", base: "100%" }}
+      >
+        {allPages[listIndex]["pageProperties"].map((properties, index) => {
+          return (
+            <Thumbnail
+              key={index}
+              pageId={allPages[listIndex]["pages"]["results"][index].id}
+              {...propertiesToObject(properties)}
+            />
+          );
+        })}
+      </VStack>
+      <Divider mt="1rem" />
+      <Box margin={"1rem auto"} w={{ lg: "90%", base: "100%" }}>
+        {listIndex != 0 && (
+          <Text
+            float="left"
+            onClick={() => {
+              setListIndex(listIndex - 1);
+            }}
+          >
+            Previous{" "}
+          </Text>
+        )}
+        {listIndex != allPages.length - 1 && (
+          <Text
+            float={"right"}
+            onClick={() => {
+              setListIndex(listIndex + 1);
+            }}
+          >
+            Next
+          </Text>
+        )}
+      </Box>
+    </>
   );
 };
 
 export async function getStaticProps() {
-  const pages = await blog.all();
-  const pageProperties = await Promise.all(
-    pages["results"].map(
-      async (page) => await blog.allProperties(page.id, page.properties)
-    )
-  );
+  const allPages = await blog.all();
 
   return {
     props: {
-      pages: pages,
-      pageProperties: pageProperties,
+      allPages: allPages,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
 
