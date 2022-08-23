@@ -2,12 +2,18 @@ import { Client } from "@notionhq/client";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const PAGE_SIZE = 7;
+const DEFAULT_FILTER = {
+  property: "status",
+  select: {
+    equals: "Published",
+  },
+};
 
 export const blog = {
   query({ filter, cursor }) {
     return notion.databases.query({
       database_id: process.env.NOTION_DATABASE,
-      filter: filter,
+      filter: filter || DEFAULT_FILTER,
       page_size: PAGE_SIZE,
       start_cursor: cursor,
     });
