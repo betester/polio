@@ -36,11 +36,22 @@ const Experiences = () => {
             <MenuButton minW="100px" alignSelf="end" as={SecondaryButton}>
               {year}
             </MenuButton>
-            <MenuList>
-              <MenuItem onClick={() => setYear("All")}>{"All"}</MenuItem>
+            <MenuList bgColor={"inherit"} backdropFilter={"blur(20px)"}>
+              <MenuItem
+                _hover={{ bgColor: "secondary.900" }}
+                _active={{ bgColor: "secondary.900" }}
+                onClick={() => setYear("All")}
+              >
+                {"All"}
+              </MenuItem>
               {Object.keys(EXPERIENCE_DATA).map((date, index) => {
                 return (
-                  <MenuItem onClick={() => setYear(date)} key={index}>
+                  <MenuItem
+                    _hover={{ bgColor: "secondary.900" }}
+                    _active={{ bgColor: "secondary.900" }}
+                    onClick={() => setYear(date)}
+                    key={index}
+                  >
                     {date}
                   </MenuItem>
                 );

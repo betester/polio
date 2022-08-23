@@ -31,7 +31,6 @@ export const Project = ({
       <VStack pr="1em" gap={"0.5em"} mt={{ base: "1em" }} alignItems={"start"}>
         <Flex w={"100%"} alignItems="center" justifyContent={"space-between"}>
           <Heading fontSize={{ base: "17px", lg: "3xl" }}>{title}</Heading>
-          <PrimaryButton>Detail</PrimaryButton>
         </Flex>
         <Text as={"i"}>{date}</Text>
         <Text maxW={"80ch"}>{description}</Text>
@@ -48,7 +47,7 @@ export const Project = ({
             <Text fontWeight={"bold"}>My Contribution</Text>
 
             <List mt="1em" spacing={3} pl="1em">
-              {contributions?.map((contribution,index) => {
+              {contributions?.map((contribution, index) => {
                 return (
                   <ListItem key={index}>
                     <ListIcon as={CheckCircleIcon} color="green.500" />
@@ -63,7 +62,7 @@ export const Project = ({
           <Box>
             <Text fontWeight={"bold"}>Tech Stack</Text>
             <HStack mt="1em">
-              {techStacks?.map((techStack,index) => (
+              {techStacks?.map((techStack, index) => (
                 <Avatar key={index} background={"white"} src={techStack} />
               ))}
             </HStack>

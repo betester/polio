@@ -65,6 +65,7 @@ const Projects = () => {
                   <MenuGroup title={type}>
                     {PROJECT_DATA[type].map((data, index) => (
                       <MenuItem
+                        _hover={{ bgColor: "secondary.900" }}
                         key={index}
                         onClick={() => {
                           changeSelectedProject(index, type);
