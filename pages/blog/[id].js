@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
   return {
     paths: pageIds.flat(),
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
