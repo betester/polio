@@ -1,4 +1,5 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, ListItem, OrderedList, Text } from "@chakra-ui/react";
+import { Img } from "@chakra-ui/react";
 
 const COMPONENT_MAP = new Map([
   [
@@ -34,12 +35,35 @@ const COMPONENT_MAP = new Map([
       </Box>
     ),
   ],
+  ["image", (src) => <Img w="100%" src={src} alt={src} />],
+  [
+    "numbered_list_item",
+    (data) => {
+      <OrderedList>
+        {data.map((datum, index) => (
+          <ListItem key={index}>{datum["rich_text"][0]["plain_text"]}</ListItem>
+        ))}
+      </OrderedList>;
+    },
+  ],
 ]);
+
+const getBlockData = (block) => {
+  switch (block["type"]) {
+    case "image":
+      return block["image"]["file"]["url"];
+
+    case "numbered_list_item":
+      console.log(block["numbered_list_item"]);
+      return block["numbered_list_item"];
+
+    default:
+      return block[block["type"]]["rich_text"]?.[0]?.plain_text;
+  }
+};
 
 export const renderBlockComponent = (block) => {
   const blockComponent = COMPONENT_MAP.get(block["type"]);
-  return (
-    blockComponent &&
-    blockComponent(block[block["type"]]["rich_text"]?.[0]?.plain_text)
-  );
+  const data = getBlockData(block);
+  return blockComponent && blockComponent(data);
 };

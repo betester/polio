@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
       overflow={"auto"}
     >
       <Navbar />
-      <Box h={"100%"} w={"100%"} p={{lg : "4em 3em", base : "5em 0"}}>
+      <Box h={"100%"} w={"100%"} p={{ lg: "4em 3em", base: "5em 0" }}>
         {children}
       </Box>
     </Box>

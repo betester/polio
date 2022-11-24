@@ -1,6 +1,5 @@
 import {
-  Divider,
-  Flex,
+
   Heading,
   Menu,
   MenuButton,
