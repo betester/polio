@@ -1,5 +1,22 @@
-import { Box, ListItem, OrderedList, Text } from "@chakra-ui/react";
+import { Box, ListItem, OrderedList, Text, Flex } from "@chakra-ui/react";
 import { Img } from "@chakra-ui/react";
+import Latex from "react-latex-next";
+import "katex/dist/katex.min.css";
+
+const renderParagraph = (data) => {
+  if (!data) return;
+  const texts = [];
+  for (let i = 0; i < data.length; i++) {
+    switch (data[i]["type"]) {
+      case "equation":
+        texts.push(`$${data[i].plain_text}$`);
+        break;
+      default:
+        texts.push(data[i].plain_text);
+    }
+  }
+  return <Latex>{texts.join(" ")}</Latex>;
+};
 
 const COMPONENT_MAP = new Map([
   [
@@ -26,7 +43,12 @@ const COMPONENT_MAP = new Map([
       </Text>
     ),
   ],
-  ["paragraph", (children) => <Text color="#f6f6f6">{children}</Text>],
+  [
+    "paragraph",
+    (data) => {
+      return <>{renderParagraph(data)}</>;
+    },
+  ],
   [
     "code",
     ({ children }) => (
@@ -39,11 +61,21 @@ const COMPONENT_MAP = new Map([
   [
     "numbered_list_item",
     (data) => {
-      <OrderedList>
-        {data.map((datum, index) => (
-          <ListItem key={index}>{datum["rich_text"][0]["plain_text"]}</ListItem>
-        ))}
-      </OrderedList>;
+      return (
+        <OrderedList>
+          {data.map((datum, index) => (
+            <ListItem key={index}>
+              {datum["rich_text"][0]["plain_text"]}
+            </ListItem>
+          ))}
+        </OrderedList>
+      );
+    },
+  ],
+  [
+    "equation",
+    (data) => {
+      return <Latex>${data}$</Latex>;
     },
   ],
 ]);
@@ -54,8 +86,13 @@ const getBlockData = (block) => {
       return block["image"]["file"]["url"];
 
     case "numbered_list_item":
-      console.log(block["numbered_list_item"]);
       return block["numbered_list_item"];
+
+    case "equation":
+      return block["equation"]["expression"];
+
+    case "paragraph":
+      return block["paragraph"]["rich_text"];
 
     default:
       return block[block["type"]]["rich_text"]?.[0]?.plain_text;
