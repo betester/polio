@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
       bgColor={"primary.900"}
       w={"100%"}
       color="white"
-      p="2em 3em"
+      p={{ base: "2em 1.2em", lg: "2em 3em" }}
       overflow={"auto"}
     >
       <Navbar />

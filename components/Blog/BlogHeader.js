@@ -4,7 +4,11 @@ import moment from "moment";
 export const BlogHeader = ({ title, date, tags }) => {
   return (
     <>
-      <Text maxW="45ch" fontWeight={"bold"} fontSize={"3rem"}>
+      <Text
+        maxW="45ch"
+        fontWeight={"bold"}
+        fontSize={{ base: "2rem", lg: "3rem" }}
+      >
         {title["results"][0]["title"]["plain_text"]}
       </Text>
       <Text color={"#f6f6f6"} fontWeight="light">
