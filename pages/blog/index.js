@@ -14,7 +14,7 @@ const Blog = ({ allPages }) => {
       <TitleWrapper mb="2em">
         <Heading fontSize={{ base: "2xl", lg: "4xl" }}>Blog</Heading>
         <Text fontSize={{ lg: "1rem", base: "16px" }}>
-          Where my personal thoughts be poured
+          I tend to lie to myself, dont trust (blindly) whatever written here
         </Text>
       </TitleWrapper>
       <VStack

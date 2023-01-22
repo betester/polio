@@ -31,6 +31,7 @@ export default function Home() {
     <Flex
       alignItems={!aboutMe && "center"}
       h={!aboutMe && "100%"}
+      justifyContent={"center"}
       pb="1em"
       w="100%"
     >

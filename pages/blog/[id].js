@@ -49,9 +49,7 @@ const BlogDetail = ({ details, properties }) => {
       w={{ lg: "70%", base: "100%" }}
     >
       <BlogHeader {...properties} />
-      {/* {details["results"].map((detail, index) => {
-        return <Box key={index}>{renderBlockComponent(detail)}</Box>;
-      })} */}
+    
       {details
         .map((detail) => {
           return detail["results"].map((block, index) => {
