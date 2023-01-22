@@ -47,8 +47,25 @@ export const blog = {
     return notion.databases.retrieve({ database_id: database_id });
   },
 
-  detail(block_id) {
-    return notion.blocks.children.list({ block_id: block_id, page_size: 50 });
+  async detail(block_id) {
+    const allChildren = [];
+
+    allChildren.push(
+      await notion.blocks.children.list({ block_id: block_id, page_size: 50 })
+    );
+
+    let i = 0;
+    while (allChildren[i].has_more) {
+      allChildren.push(
+        await notion.blocks.children.list({
+          block_id: block_id,
+          page_size: 50,
+          start_cursor: allChildren[i].next_cursor,
+        })
+      );
+      i++;
+    }
+    return allChildren;
   },
   page(page_id) {
     return notion.pages.retrieve({ page_id: page_id });

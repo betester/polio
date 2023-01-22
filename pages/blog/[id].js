@@ -16,7 +16,6 @@ export async function getStaticPaths() {
     });
   });
 
-
   return {
     paths: pageIds.flat(),
     fallback: false,
@@ -42,6 +41,7 @@ export async function getStaticProps(context) {
 }
 
 const BlogDetail = ({ details, properties }) => {
+
   return (
     <VStack
       alignItems={"start"}
@@ -49,9 +49,16 @@ const BlogDetail = ({ details, properties }) => {
       w={{ lg: "70%", base: "100%" }}
     >
       <BlogHeader {...properties} />
-      {details["results"].map((detail, index) => {
+      {/* {details["results"].map((detail, index) => {
         return <Box key={index}>{renderBlockComponent(detail)}</Box>;
-      })}
+      })} */}
+      {details
+        .map((detail) => {
+          return detail["results"].map((block, index) => {
+            return <Box key={index}>{renderBlockComponent(block)}</Box>;
+          });
+        })
+        .flat()}
     </VStack>
   );
 };
