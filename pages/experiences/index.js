@@ -59,6 +59,8 @@ const Experiences = () => {
           </Menu>
         </VStack>
         {Object.keys(EXPERIENCE_DATA)
+          .sort()
+          .reverse()
           .filter((experience) => {
             if (year === "All") {
               return true;

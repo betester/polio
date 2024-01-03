@@ -4,7 +4,6 @@ import { ExperienceItem } from "./Item";
 export const ExperienceContainer = ({ data, date }) => {
   return (
     <VStack
-      m="1em 0"
       w="100%"
       p={{ lg: "0 6em" }}
       gap="0.5em"

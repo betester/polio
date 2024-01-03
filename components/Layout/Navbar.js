@@ -1,16 +1,13 @@
 import {
-  Button,
   HStack,
   Link,
   Text,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Input,
   VStack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
@@ -77,16 +74,6 @@ export const Navbar = () => {
               </Text>
             </Link>
           </NextLink>
-          <NextLink href={"/blog"}>
-            <Link style={{ textDecoration: "none" }}>
-              <Text
-                _hover={{ color: "secondary.900" }}
-                color={router.pathname === "/blog" && "secondary.900"}
-              >
-                Blog
-              </Text>
-            </Link>
-          </NextLink>
         </HStack>
       )}
       <Drawer
@@ -146,16 +133,6 @@ export const Navbar = () => {
                     fontSize={"xl"}
                   >
                     Contact
-                  </Text>
-                </Link>
-              </NextLink>
-              <NextLink href={"/blog"}>
-                <Link onClick={onClose} style={{ textDecoration: "none" }}>
-                  <Text
-                    _hover={{ color: "secondary.900" }}
-                    color={router.pathname === "/blog" && "secondary.900"}
-                  >
-                    Blog
                   </Text>
                 </Link>
               </NextLink>

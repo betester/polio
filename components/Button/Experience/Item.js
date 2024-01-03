@@ -13,6 +13,7 @@ export const ExperienceItem = ({ datum }) => {
   return (
     <>
       <Flex
+        pb={"1em"}
         alignItems={{ lg: "center", base: "start" }}
         flexDir={{ lg: "row", base: "column" }}
         justifyContent="space-between"
@@ -26,7 +27,7 @@ export const ExperienceItem = ({ datum }) => {
       </Flex>
       <Text mt="0.3em">{datum.description}</Text>
 
-      <List mt="0.3em" ml="1em">
+      <List gap="0.5em" pb="1.5em" mt="0.3em" ml="1em">
         {datum.contributions.map((contribution, index) => (
           <ListItem key={index}>
             <ListIcon as={CheckCircleIcon} color="green.500" />
