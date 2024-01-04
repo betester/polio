@@ -12,7 +12,7 @@ export const ABOUT_ME_DATA = [
     contents: [`I am currently studying in Universitas Indonesia, taking
     Computer Science degree. I actually have no programming
     experience, i chose Computer science just because. Turns out,
-    i really enjoyed it and now i'm at my 2nd year.`],
+    i really enjoyed it and now i'm at penultimate year.`],
   },
   {
     title: "My Coding Experience 💻",

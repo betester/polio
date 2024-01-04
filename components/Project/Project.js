@@ -6,15 +6,14 @@ import {
   Badge,
   HStack,
   Box,
-  Image,
   List,
   ListItem,
   Tooltip,
   ListIcon,
   Avatar,
+  Link
 } from "@chakra-ui/react";
 import { STATUSES } from "../../constant/Project";
-import { PrimaryButton } from "../Button";
 import { FadeWrapper } from "../Wrapper";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
@@ -25,12 +24,17 @@ export const Project = ({
   contributions,
   techStacks,
   description,
+  link
 }) => {
   return (
     <FadeWrapper>
       <VStack pr="1em" gap={"0.5em"} mt={{ base: "1em" }} alignItems={"start"}>
         <Flex w={"100%"} alignItems="center" justifyContent={"space-between"}>
-          <Heading fontSize={{ base: "17px", lg: "3xl" }}>{title}</Heading>
+          <Heading fontSize={{ base: "17px", lg: "3xl" }}>
+           {
+            link ? <Link color={"secondary.900"} href={link} isExternal>{title}</Link> : title
+           }
+          </Heading>
         </Flex>
         <Text as={"i"}>{date}</Text>
         <Text maxW={"80ch"}>{description}</Text>
@@ -63,7 +67,7 @@ export const Project = ({
             <Text fontWeight={"bold"}>Tech Stack</Text>
             <HStack mt="1em">
               {techStacks?.map((techStack, index) => (
-                <Avatar key={index} background={"white"} src={techStack} />
+                <Avatar size="md" key={index} background={"white"} src={techStack} />
               ))}
             </HStack>
           </Box>
