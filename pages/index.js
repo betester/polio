@@ -5,13 +5,14 @@ import {
   Text,
   VStack,
   Code,
+  Link,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { FadeWrapper, TitleWrapper } from "../components/Wrapper";
 import { SecondaryButton } from "../components/Button/SecondaryButton";
 import { SlideDownWrapper } from "../components/Wrapper/SlideDownWrapper";
-import { ABOUT_ME_DATA } from "../constant/About Me";
+import { ABOUT_ME_DATA, RESUME_URL } from "../constant/About Me";
 import { changeWord } from "../utils/scrambleWord";
 
 export default function Home() {
@@ -19,13 +20,15 @@ export default function Home() {
   const [random, setRandom] = useState("Random");
 
   useEffect(() => {
-    let time = setTimeout(() => {
-      setRandom(changeWord(random));
+    const intervalId = setInterval(() => {
+      setRandom((prevRandom) => changeWord(prevRandom));
     }, 1500);
+
+    // Cleanup function to clear the interval when the component unmounts
     return () => {
-      clearTimeout(time);
+      clearInterval(intervalId);
     };
-  }, [random]);
+  }, []);
 
   return (
     <Flex
@@ -58,6 +61,9 @@ export default function Home() {
             }}
           >
             About me
+          </SecondaryButton>
+          <SecondaryButton isExternal href={RESUME_URL} ml="1em">
+            My Resume
           </SecondaryButton>
         </FadeWrapper>
       )}

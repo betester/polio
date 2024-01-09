@@ -35,3 +35,5 @@ export const ABOUT_ME_DATA = [
     things i should learn 📚.`],
   },
 ];
+
+export const RESUME_URL = 'https://docs.google.com/document/d/1h9pOj-sf9jC3ZuBXcCDb6T0EilAs2I7RQSjTLRvHkps/edit?usp=sharing';

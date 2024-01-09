@@ -16,6 +16,7 @@ import {
 import { STATUSES } from "../../constant/Project";
 import { FadeWrapper } from "../Wrapper";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import { SecondaryButton } from "../Button";
 
 export const Project = ({
   title = "Name of the Project",
@@ -31,10 +32,13 @@ export const Project = ({
       <VStack pr="1em" gap={"0.5em"} mt={{ base: "1em" }} alignItems={"start"}>
         <Flex w={"100%"} alignItems="center" justifyContent={"space-between"}>
           <Heading fontSize={{ base: "17px", lg: "3xl" }}>
-           {
-            link ? <Link color={"secondary.900"} href={link} isExternal>{title}</Link> : title
-           }
+            {title}
           </Heading>
+          {
+            link && <SecondaryButton href={link} isExternal>
+              See Project
+            </SecondaryButton>
+          }
         </Flex>
         <Text as={"i"}>{date}</Text>
         <Text maxW={"80ch"}>{description}</Text>

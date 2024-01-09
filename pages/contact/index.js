@@ -23,14 +23,14 @@ const Contact = () => {
       <FadeWrapper>
         <VStack w="100%" gap="3em">
           <TitleWrapper textAlign="center">
-            <Heading fontSize={{ base: "2xl", lg: "5xl" }}>Hit me up!</Heading>
+            <Heading fontSize={{ base: "2xl", lg: "4xl" }}>My Contacts</Heading>
             <Text fontSize={{ lg: "1.2rem", base: "16px" }}>
-              Feel free if you wanted to have a small chit-chat, <br /> {"i'll"}{" "}
-              be more than happy to reply 😄{" "}
+              I mainly reachable from email, but feel free to contact me from LinkedIn or <br /> if you 
+              wanted to connect with my GitHub, i am happily to accept 😄
             </Text>
           </TitleWrapper>
           <HStack gap="1em">
-            <Tooltip hasArrow label="ikramzulkarnaen02@gmail.com">
+            <Tooltip hasArrow label="My main email, feel free to contact">
               <span>
                 <Icon
                   as={HiOutlineMail}
@@ -42,7 +42,7 @@ const Contact = () => {
                 />
               </span>
             </Tooltip>
-            <Tooltip hasArrow label="betester">
+            <Tooltip hasArrow label="Follow me on GitHub">
               <span>
                 <Link href="https://github.com/betester" isExternal>
                   <Icon
@@ -56,7 +56,7 @@ const Contact = () => {
             <Tooltip hasArrow label="ikram mullah">
               <span>
                 <Link
-                  href="https://www.linkedin.com/in/ikram-mullah-0b17501aa/"
+                  href="https://www.linkedin.com/in/ikramullah-0b17501aa/"
                   isExternal
                 >
                   <Icon

@@ -1,11 +1,14 @@
-import { Button, forwardRef } from "@chakra-ui/react";
+import { Button, forwardRef, Link } from "@chakra-ui/react";
 
 export const SecondaryButton = forwardRef(
-  ({ callback, active = false, children, ...props }, ref) => (
+  ({ href, callback, active = false, isExternal=false, children, ...props }, ref) => (
     <Button
       ref={ref}
+      as={href ? Link: "button"}
+      isExternal={isExternal}
       onClick={callback}
       mt="2em"
+      href={href}
       bgColor={active ? "secondary.900" : "inherit"}
       border="1px solid"
       color={active && "black"}
